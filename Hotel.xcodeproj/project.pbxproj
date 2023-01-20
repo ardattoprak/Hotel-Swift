@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		09E4D738297B1C6E00820926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D737297B1C6E00820926 /* AppDelegate.swift */; };
 		09E4D73A297B1C6E00820926 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D739297B1C6E00820926 /* SceneDelegate.swift */; };
-		09E4D73C297B1C6E00820926 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D73B297B1C6E00820926 /* ViewController.swift */; };
 		09E4D73F297B1C6E00820926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E4D73D297B1C6E00820926 /* Main.storyboard */; };
 		09E4D741297B1C6F00820926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E4D740297B1C6F00820926 /* Assets.xcassets */; };
 		09E4D744297B1C6F00820926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E4D742297B1C6F00820926 /* LaunchScreen.storyboard */; };
+		09E4D74C297B1DF300820926 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D74B297B1DF300820926 /* Registration.swift */; };
+		09E4D74F297B1ED800820926 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D74E297B1ED800820926 /* RoomType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09E4D734297B1C6E00820926 /* Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E4D737297B1C6E00820926 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09E4D739297B1C6E00820926 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		09E4D73B297B1C6E00820926 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		09E4D73E297B1C6E00820926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		09E4D740297B1C6F00820926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09E4D743297B1C6F00820926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09E4D745297B1C6F00820926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09E4D74B297B1DF300820926 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		09E4D74E297B1ED800820926 /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,24 @@
 		09E4D736297B1C6E00820926 /* Hotel */ = {
 			isa = PBXGroup;
 			children = (
+				09E4D74D297B1E3200820926 /* Models */,
 				09E4D737297B1C6E00820926 /* AppDelegate.swift */,
 				09E4D739297B1C6E00820926 /* SceneDelegate.swift */,
-				09E4D73B297B1C6E00820926 /* ViewController.swift */,
 				09E4D73D297B1C6E00820926 /* Main.storyboard */,
 				09E4D740297B1C6F00820926 /* Assets.xcassets */,
 				09E4D742297B1C6F00820926 /* LaunchScreen.storyboard */,
 				09E4D745297B1C6F00820926 /* Info.plist */,
 			);
 			path = Hotel;
+			sourceTree = "<group>";
+		};
+		09E4D74D297B1E3200820926 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09E4D74B297B1DF300820926 /* Registration.swift */,
+				09E4D74E297B1ED800820926 /* RoomType.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09E4D73C297B1C6E00820926 /* ViewController.swift in Sources */,
+				09E4D74F297B1ED800820926 /* RoomType.swift in Sources */,
 				09E4D738297B1C6E00820926 /* AppDelegate.swift in Sources */,
+				09E4D74C297B1DF300820926 /* Registration.swift in Sources */,
 				09E4D73A297B1C6E00820926 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
