@@ -20,6 +20,21 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var checkOutDatePicker: UIDatePicker!
     
     // MARK: - Properties
+    let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
+    let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
+    
+    var isCheckInDatePickerShown = false {
+        didSet {
+            // isHidden: Bir arayüz elemanının görünürlüğünü söyler.
+            checkInDatePicker.isHidden = !isCheckInDatePickerShown
+        }
+    }
+    var isCheckOutDatePickerShown = false {
+        didSet {
+            // isHidden: Bir arayüz elemanının görünürlüğünü söyler.
+            checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
+        }
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -35,6 +50,25 @@ class AddRegistrationTableViewController: UITableViewController {
     }
     
     // MARK: - Functions
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        switch indexPath {
+        case checkInDatePickerCellIndexPath:
+            if isCheckInDatePickerShown {
+                return 216
+            }else {
+                return 0
+            }
+        case checkOutDatePickerCellIndexPath:
+            if isCheckOutDatePickerShown {
+                return 216
+            }else {
+                return 0
+            }
+        default:
+            return 44
+        }
+    }
     func updateDateViews() {
         
         // 21/03/1996 --> .short --> 3:30 PM
