@@ -20,8 +20,12 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var checkOutDatePicker: UIDatePicker!
     
     // MARK: - Properties
+    let checkInDateLabelCellIndexPath = IndexPath(row: 0, section: 1)
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
+    
+    let checkOutDateLabelCellIndexPath = IndexPath(row: 2, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
+    
     
     var isCheckInDatePickerShown = false {
         didSet {
@@ -52,6 +56,8 @@ class AddRegistrationTableViewController: UITableViewController {
     // MARK: - Functions
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        // tableview çiziliceğinde her hücre için tek tek çalışır
+        
         switch indexPath {
         case checkInDatePickerCellIndexPath:
             if isCheckInDatePickerShown {
@@ -69,6 +75,47 @@ class AddRegistrationTableViewController: UITableViewController {
             return 44
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Seçili hücrenin seçili olma durumunu ortadan kaldırır.
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath {
+        case checkInDateLabelCellIndexPath:
+            if isCheckInDatePickerShown {
+                isCheckInDatePickerShown = false
+            } else if isCheckOutDatePickerShown {
+                isCheckOutDatePickerShown = false
+                isCheckInDatePickerShown = true
+            } else {
+                isCheckInDatePickerShown = true
+            }
+            
+            // Değişkenlerdeki değişim ile, heigtForRow fonksiyonu tekrardan çalıştırılır.
+            // Fakat yükseklik değişimi animasyon ile çalışır
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            
+        case checkOutDateLabelCellIndexPath:
+            if isCheckOutDatePickerShown {
+                isCheckOutDatePickerShown = false
+            } else if isCheckInDatePickerShown {
+                isCheckInDatePickerShown = false
+                isCheckOutDatePickerShown = true
+            } else {
+                isCheckOutDatePickerShown = true
+            }
+            
+            // Değişkenlerdeki değişim ile, heigtForRow fonksiyonu tekrardan çalıştırılır.
+            // Fakat yükseklik değişimi animasyon ile çalışır
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            
+        default:
+            break
+        }
+    }
+    
     func updateDateViews() {
         
         // 21/03/1996 --> .short --> 3:30 PM
