@@ -19,6 +19,13 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var checkOutDatelabel:UILabel!
     @IBOutlet var checkOutDatePicker: UIDatePicker!
     
+    @IBOutlet var numberOfAdultsLabel: UILabel!
+    @IBOutlet var numberOfChildrenLabel: UILabel!
+    @IBOutlet var numberOfAdultsStepper: UIStepper!
+    @IBOutlet var numberOfChildrenStepper: UIStepper!
+    @IBOutlet var wifiSwitch: UISwitch!
+    
+    
     // MARK: - Properties
     let checkInDateLabelCellIndexPath = IndexPath(row: 0, section: 1)
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
@@ -50,7 +57,10 @@ class AddRegistrationTableViewController: UITableViewController {
         
         checkInDatePicker.minimumDate = midnightToday
         checkInDatePicker.date = midnightToday
-
+        
+        //Storyboard'da ayarladığımız geçici değerleri o anki değere eşitlemek için.
+        updateNumberOfGuests()
+        
     }
     
     // MARK: - Functions
@@ -131,27 +141,45 @@ class AddRegistrationTableViewController: UITableViewController {
         checkInDatelabel.text = dateFormatter.string(from: checkInDatePicker.date)
         checkOutDatelabel.text = dateFormatter.string(from: checkOutDatePicker.date)
         
-        
+    }
+    
+    func updateNumberOfGuests() {
+        numberOfAdultsLabel.text = "\(Int(numberOfAdultsStepper.value))"
+        numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
     }
     
     // MARK: - Actions
     @IBAction func doneBarButtonTapped(_ button: UIBarButtonItem){
-        let firstname = firstNameTextField.text!
-        let lastname = lastNameTextField.text!
+        let firstName = firstNameTextField.text!
+        let lastName = lastNameTextField.text!
         let email = emailTextField.text!
         let checkInDate = checkInDatePicker.date
         let checkOutDate = checkOutDatePicker.date
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren = Int(numberOfChildrenStepper.value)
+        let hasWifi = wifiSwitch.isOn
         
         print("Done Tapped")
-        print("Firstname: \(firstname)")
-        print("Lastname: \(lastname)")
+        print("Firstname: \(firstName)")
+        print("Lastname: \(lastName)")
         print("Email: \(email)")
         print("CheckIn: \(checkInDate)")
         print("CheckOut: \(checkOutDate)")
+        print("NumberOfAdults: \(numberOfAdults)")
+        print("NumberOfChildren: \(numberOfChildren)")
+        print("wifi: \(hasWifi)")
     }
     
     @IBAction func datePickerValueChanged(_ picker: UIDatePicker){
         updateDateViews()
     }
     
+    @IBAction func stepperValueChanged(_ stepper: UIStepper) {
+        updateNumberOfGuests()
+    }
+    
+    @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
+    
+}
+
 }
