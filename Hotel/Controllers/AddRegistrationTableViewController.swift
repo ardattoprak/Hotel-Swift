@@ -7,7 +7,8 @@
 
 import UIKit
 
-class AddRegistrationTableViewController: UITableViewController {
+class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeTableViewControllerDelegate {
+    
     
     // MARK: - UI Elements
     @IBOutlet var firstNameTextField: UITextField!
@@ -26,12 +27,18 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var wifiSwitch: UISwitch!
     
     
+    @IBOutlet var roomTypeLabel: UILabel!
+    
+    
+    
+    
     // MARK: - Properties
     let checkInDateLabelCellIndexPath = IndexPath(row: 0, section: 1)
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
     
     let checkOutDateLabelCellIndexPath = IndexPath(row: 2, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
+    
     
     
     var isCheckInDatePickerShown = false {
@@ -47,6 +54,8 @@ class AddRegistrationTableViewController: UITableViewController {
         }
     }
     
+    var roomType: RoomType?
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,12 +67,26 @@ class AddRegistrationTableViewController: UITableViewController {
         checkInDatePicker.minimumDate = midnightToday
         checkInDatePicker.date = midnightToday
         
+        updateDateViews()
+        
         //Storyboard'da ayarladığımız geçici değerleri o anki değere eşitlemek için.
         updateNumberOfGuests()
+        
+        updateRoomType()
         
     }
     
     // MARK: - Functions
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SelectRoomType" {
+            let destination = segue.destination as? SelectRoomTypeTableViewController
+            // gidicek sayfanın delegate ı bu sayfa olsun ki verileri buraya aktarabilsin.
+            destination?.delegate = self
+            // gideceğimiz sayfaya seçilmiş roomtype ı yollamalıyız ki diğer sayfada tikli olsun.
+            destination?.selectedRoomType = roomType
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         // tableview çiziliceğinde her hücre için tek tek çalışır
@@ -140,13 +163,26 @@ class AddRegistrationTableViewController: UITableViewController {
         
         checkInDatelabel.text = dateFormatter.string(from: checkInDatePicker.date)
         checkOutDatelabel.text = dateFormatter.string(from: checkOutDatePicker.date)
-        
     }
     
     func updateNumberOfGuests() {
         numberOfAdultsLabel.text = "\(Int(numberOfAdultsStepper.value))"
         numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
     }
+    
+    func updateRoomType() {
+        if let roomType = roomType {
+            roomTypeLabel.text = roomType.name
+        } else {
+            roomTypeLabel.text = "Not Set"
+        }
+    }
+    
+    func didSelect(roomType: RoomType) {
+        self.roomType = roomType
+        updateRoomType()
+    }
+    
     
     // MARK: - Actions
     @IBAction func doneBarButtonTapped(_ button: UIBarButtonItem){
@@ -158,6 +194,7 @@ class AddRegistrationTableViewController: UITableViewController {
         let numberOfAdults = Int(numberOfAdultsStepper.value)
         let numberOfChildren = Int(numberOfChildrenStepper.value)
         let hasWifi = wifiSwitch.isOn
+        let roomChoice = roomType?.name ?? "Not Set"
         
         print("Done Tapped")
         print("Firstname: \(firstName)")
@@ -168,6 +205,7 @@ class AddRegistrationTableViewController: UITableViewController {
         print("NumberOfAdults: \(numberOfAdults)")
         print("NumberOfChildren: \(numberOfChildren)")
         print("wifi: \(hasWifi)")
+        print("roomChoise: \(roomChoice)")
     }
     
     @IBAction func datePickerValueChanged(_ picker: UIDatePicker){

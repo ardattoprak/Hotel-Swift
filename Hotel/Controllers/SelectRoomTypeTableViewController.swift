@@ -7,10 +7,19 @@
 
 import UIKit
 
+protocol  SelectRoomTypeTableViewControllerDelegate: class {
+    // class yazınca sadece classlar implement edebilir structlar edemez
+    
+    func didSelect(roomType: RoomType)
+}
+
 class SelectRoomTypeTableViewController: UITableViewController {
     // MARK: - UI Elements
     
     // MARK: - Properties
+    
+    var selectedRoomType: RoomType?
+    weak var delegate: SelectRoomTypeTableViewControllerDelegate?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -33,7 +42,21 @@ class SelectRoomTypeTableViewController: UITableViewController {
         cell.textLabel?.text = roomType.name
         cell.detailTextLabel?.text = "₺ \(roomType.price)"
         
+        if roomType == selectedRoomType {
+            // o an çizilen oda türü, önceden seçilen oda türü mü.
+            cell.accessoryType = .checkmark
+        }else {
+            cell.accessoryType = .none
+        }
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        selectedRoomType = RoomType.all[indexPath.row]
+        delegate?.didSelect(roomType: selectedRoomType!)
+        tableView.reloadData()
     }
     
     
