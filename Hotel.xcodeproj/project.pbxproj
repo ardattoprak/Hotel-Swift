@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09785009297C7E5700FE3F0D /* RegistrationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09785008297C7E5700FE3F0D /* RegistrationsTableViewController.swift */; };
 		09E2FB70297C7000005E0C5D /* SelectRoomTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E2FB6F297C7000005E0C5D /* SelectRoomTypeTableViewController.swift */; };
 		09E4D738297B1C6E00820926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D737297B1C6E00820926 /* AppDelegate.swift */; };
 		09E4D73A297B1C6E00820926 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E4D739297B1C6E00820926 /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09785008297C7E5700FE3F0D /* RegistrationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationsTableViewController.swift; sourceTree = "<group>"; };
 		09E2FB6F297C7000005E0C5D /* SelectRoomTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomTypeTableViewController.swift; sourceTree = "<group>"; };
 		09E4D734297B1C6E00820926 /* Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E4D737297B1C6E00820926 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				09E4D750297B235000820926 /* AddRegistrationTableViewController.swift */,
 				09E2FB6F297C7000005E0C5D /* SelectRoomTypeTableViewController.swift */,
+				09785008297C7E5700FE3F0D /* RegistrationsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				09E2FB70297C7000005E0C5D /* SelectRoomTypeTableViewController.swift in Sources */,
 				09E4D74F297B1ED800820926 /* RoomType.swift in Sources */,
 				09E4D751297B235000820926 /* AddRegistrationTableViewController.swift in Sources */,
+				09785009297C7E5700FE3F0D /* RegistrationsTableViewController.swift in Sources */,
 				09E4D738297B1C6E00820926 /* AppDelegate.swift in Sources */,
 				09E4D74C297B1DF300820926 /* Registration.swift in Sources */,
 				09E4D73A297B1C6E00820926 /* SceneDelegate.swift in Sources */,
