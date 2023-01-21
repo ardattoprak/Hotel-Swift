@@ -10,12 +10,12 @@ import Foundation
 struct Registration {
     
     // MARK: - Properties
-    var firstname: String
-    var lastname: String
-    var emailAdress: String
+    var firstName: String
+    var lastName: String
+    var emailAddress: String
     
-    var chechInDate: Date
-    var chechOutDate: Date
+    var checkInDate: Date
+    var checkOutDate: Date
     
     var numberOfAdults: Int
     var numberOfAChildren: Int

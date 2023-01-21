@@ -56,6 +56,22 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     
     var roomType: RoomType?
     
+    var registration: Registration? {
+        guard let roomType = roomType else { return nil }
+        
+        let firstName = firstNameTextField.text!
+        let lastName = lastNameTextField.text!
+        let email = emailTextField.text!
+        let checkInDate = checkInDatePicker.date
+        let checkOutDate = checkOutDatePicker.date
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren = Int(numberOfChildrenStepper.value)
+        let wifi = wifiSwitch.isOn
+        
+        return Registration(firstName: firstName, lastName: lastName, emailAddress: email, checkInDate: checkInDate, checkOutDate: checkOutDate, numberOfAdults: numberOfAdults, numberOfAChildren: numberOfChildren, roomType: roomType, wifi: wifi)
+        
+    }
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,26 +202,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     
     // MARK: - Actions
     @IBAction func doneBarButtonTapped(_ button: UIBarButtonItem){
-        let firstName = firstNameTextField.text!
-        let lastName = lastNameTextField.text!
-        let email = emailTextField.text!
-        let checkInDate = checkInDatePicker.date
-        let checkOutDate = checkOutDatePicker.date
-        let numberOfAdults = Int(numberOfAdultsStepper.value)
-        let numberOfChildren = Int(numberOfChildrenStepper.value)
-        let hasWifi = wifiSwitch.isOn
-        let roomChoice = roomType?.name ?? "Not Set"
-        
-        print("Done Tapped")
-        print("Firstname: \(firstName)")
-        print("Lastname: \(lastName)")
-        print("Email: \(email)")
-        print("CheckIn: \(checkInDate)")
-        print("CheckOut: \(checkOutDate)")
-        print("NumberOfAdults: \(numberOfAdults)")
-        print("NumberOfChildren: \(numberOfChildren)")
-        print("wifi: \(hasWifi)")
-        print("roomChoise: \(roomChoice)")
+       print(registration)
     }
     
     @IBAction func datePickerValueChanged(_ picker: UIDatePicker){
