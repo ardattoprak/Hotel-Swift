@@ -23,4 +23,8 @@ struct Registration {
     var roomType: RoomType
     var wifi: Bool
     
-}
+    // MARK: - Functions
+    func fullName() -> String {
+        return firstName + " " + lastName
+    }
+    }

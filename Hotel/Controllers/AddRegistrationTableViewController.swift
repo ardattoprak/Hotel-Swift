@@ -200,11 +200,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     }
     
     
-    // MARK: - Actions
-    @IBAction func doneBarButtonTapped(_ button: UIBarButtonItem){
-       print(registration)
-    }
-    
+    // MARK: - Actions    
     @IBAction func datePickerValueChanged(_ picker: UIDatePicker){
         updateDateViews()
     }
@@ -216,5 +212,8 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
     
 }
+    @IBAction func cancelBarButtonTapped(_ button: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
 
 }
