@@ -1,5 +1,5 @@
 # Hotel-Swift
-
+An application where we can create and view hotel reservations.
 
 <p float="left">
 <img src="https://user-images.githubusercontent.com/113794954/213933622-16fb432b-bb49-4d36-bb46-c79e58c4c790.png" width="350"/>
